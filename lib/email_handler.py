@@ -20,7 +20,7 @@ def send_email(to_email, subject, status, event_name):
         case "REJECT":
             html_template = config["email-reject"]
 
-    with open(html_template, 'r') as f:
+    with open(html_template, 'r', encoding='utf-8') as f:
         html_content = f.read()
 
     # Zamień tekst w HTML

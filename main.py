@@ -25,6 +25,7 @@ class EventApp(customtkinter.CTk):
         self.title("Lista wydarzeń")
         self.geometry("1100x600")
         self.minsize(800, 600)
+        self.iconbitmap("icon.ico")
 
         # Przechowuje nagłówki i dane
         self.headers, self.data = read_all_data()
