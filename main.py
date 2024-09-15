@@ -244,7 +244,7 @@ class EventApp(customtkinter.CTk):
         if confirmation:
             row_number = self.data.index(event_data)
             update_event_status(event_data, row_number, event_accepted_index, True)
-            send_email(event_data[self.headers.index('Adres e-mail')], "Wydarzenie zaakceptowane", "ACCEPT")
+            send_email(event_data[self.headers.index('Adres e-mail')], "Wydarzenie zaakceptowane", "ACCEPT",  event_data[self.headers.index('Nazwa wydarzenia')])
             self.refresh_all_events()
 
     # Odrzucenie wydarzenia
@@ -254,7 +254,7 @@ class EventApp(customtkinter.CTk):
         if confirmation:
             row_number = self.data.index(event_data)
             update_event_status(event_data, row_number, event_accepted_index, False)
-            send_email(event_data[self.headers.index('Adres e-mail')], "Wydarzenie odrzucone", "REJECT")
+            send_email(event_data[self.headers.index('Adres e-mail')], "Wydarzenie odrzucone", "REJECT", event_data[self.headers.index('Nazwa wydarzenia')])
             self.refresh_all_events()
 
     def delete_event(self, event_data):

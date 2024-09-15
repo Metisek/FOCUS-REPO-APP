@@ -5,7 +5,6 @@ from email.mime.text import MIMEText
 import base64
 from tkinter import messagebox
 
-
 config_path = os.path.join('config.json')
 with open(config_path, 'r') as f:
     config = json.load(f)
@@ -13,7 +12,7 @@ with open(config_path, 'r') as f:
 gmail_service = create_gmail_service()
 
 # Wyślij e-mail za pomocą Gmail API
-def send_email(to_email, subject, status):
+def send_email(to_email, subject, status, event_name):
     html_template = ""
     match status:
         case "ACCEPT":
@@ -23,6 +22,10 @@ def send_email(to_email, subject, status):
 
     with open(html_template, 'r') as f:
         html_content = f.read()
+
+    # Zamień tekst w HTML
+    html_content = html_content.replace('<p style="margin: 0;"><strong>NAZWA WYDARZENIA</strong></p>',
+                                        f'<p style="margin: 0;"><strong>{event_name}</strong></p>')
 
     try:
         message = MIMEText(html_content, 'html')
