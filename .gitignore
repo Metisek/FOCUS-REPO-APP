@@ -5,3 +5,6 @@
 *token*.json
 
 secret.json
+/build
+/dist
+*.spec
