@@ -1,0 +1,7 @@
+# Ignore OAuth client JSON files
+*client*.json
+
+# Ignore token JSON files
+*token*.json
+
+secret.json

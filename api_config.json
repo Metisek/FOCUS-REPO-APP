@@ -1,0 +1,6 @@
+{
+    "oauth_credentials": "credentials.json",
+    "token_file": "token.json",
+    "gmail_token_file": "gmail_token.json",
+    "client_secret_file": "client_secret.json"
+}
