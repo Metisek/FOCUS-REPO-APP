@@ -8,3 +8,4 @@ secret.json
 /build
 /dist
 *.spec
+__pycache__/

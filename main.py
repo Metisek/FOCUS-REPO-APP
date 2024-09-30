@@ -87,10 +87,11 @@ class EventApp(customtkinter.CTk):
         for widget in frame.winfo_children():
             widget.destroy()
         for event in filtered_events:
-            event_label = customtkinter.CTkLabel(frame, text=f"{event[self.headers.index('Nazwa wydarzenia')]}: "
-                                    f"{event[self.headers.index('Data startu wydarzenia')]}", height=22)
-            event_label.bind("<Button-1>", lambda e, label=event_label, event=event, status=status: self.label_click_event(label, event, status))
-            event_label.pack(padx=10, pady=0)
+            if event:
+                event_label = customtkinter.CTkLabel(frame, text=f"{event[self.headers.index('Nazwa wydarzenia')]}: "
+                                        f"{event[self.headers.index('Data startu wydarzenia')]}", height=22)
+                event_label.bind("<Button-1>", lambda e, label=event_label, event=event, status=status: self.label_click_event(label, event, status))
+                event_label.pack(padx=10, pady=0)
 
     def label_click_event(self, label, event, status):
         # Determine the scrollable frame based on the status
