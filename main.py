@@ -202,7 +202,10 @@ class EventApp(customtkinter.CTk):
         label_text = label_translations.get(field, field) if label_translations else field
         header_label = customtkinter.CTkLabel(parent, text=f"{label_text}:", font=("Arial", 14, "bold"), anchor='w')
         value_text = customtkinter.CTkTextbox(parent, height=height, wrap='word', font=("Arial", 12))
-        value_text.insert("1.0", f"{event_data[field_index] if field_index is not None else 'Brak danych'}")
+        try:
+            value_text.insert("1.0", f"{event_data[field_index] if field_index is not None else 'Brak danych'}")
+        except (IndexError, KeyError):
+            value_text.insert("1.0", f"{'Brak danych'}")
         value_text.configure(state="disabled")  # Wyłącz edycję
         header_label.pack(anchor='w', padx=10, pady=5)
         value_text.pack(fill='x', padx=10, pady=2)
@@ -215,7 +218,10 @@ class EventApp(customtkinter.CTk):
             header_label = customtkinter.CTkLabel(frame, text=f"{field}:", font=("Arial", 14, "bold"), anchor='w')
             header_label.grid(row=0, column=i, padx=5, pady=5, sticky='w')
             value_text = customtkinter.CTkTextbox(frame, height=25, wrap='word', font=("Arial", 12))
-            value_text.insert("1.0", f"{event_data[field_index] if field_index is not None else 'Brak danych'}")
+            try:
+                value_text.insert("1.0", f"{event_data[field_index] if field_index is not None else 'Brak danych'}")
+            except (IndexError, KeyError):
+                value_text.insert("1.0", f"{'Brak danych'}")
             value_text.configure(state="disabled")  # Wyłącz edycję
             value_text.grid(row=1, column=i, padx=5, pady=2, sticky='ew')
             frame.grid_columnconfigure(i, weight=1)
@@ -229,7 +235,10 @@ class EventApp(customtkinter.CTk):
             header_label = customtkinter.CTkLabel(frame, text=f"{label_text}:", font=("Arial", 14, "bold"), anchor='w')
             header_label.grid(row=0, column=i, padx=5, pady=5, sticky='w')
             value_text = customtkinter.CTkTextbox(frame, height=25, wrap='word', font=("Arial", 12))
-            value_text.insert("1.0", f"{event_data[field_index] if field_index is not None else 'Brak danych'}")
+            try:
+                value_text.insert("1.0", f"{event_data[field_index] if field_index is not None else 'Brak danych'}")
+            except (IndexError, KeyError):
+                value_text.insert("1.0", f"{'Brak danych'}")
             value_text.configure(state="disabled")  # Wyłącz edycję
             value_text.grid(row=1, column=i, padx=5, pady=2, sticky='ew')
             frame.grid_columnconfigure(i, weight=col_weights[i])
